@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Dinein_ResturantApp.Views.OrdersPage"
+             xmlns:local="clr-namespace:Dinein_ResturantApp.ViewModels">
+    <ContentPage.BindingContext>
+        <local:OrdersViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView x:Name="ItemListView" 
+                      ItemsSource="{Binding ReservationItems}"  ItemTapped="ItemListView_ItemTapped"
+                  CachingStrategy="RecycleElement"
+                  RowHeight="110" SeparatorColor="Transparent" SeparatorVisibility="Default" Margin="10">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <RelativeLayout>
+                                <Frame CornerRadius="10" BackgroundColor="LightGray" Margin="5" Padding="1" >
+                                    <StackLayout BackgroundColor="{StaticResource Secondry}" Orientation="Horizontal" WidthRequest="370" Padding="5">
+
+                                        <StackLayout HeightRequest="110" WidthRequest="220">
+                                            <Label Text="{Binding UserName}" FontSize="Large" TextColor="black" FontAttributes="Bold" />
+                                            <Label Text="{Binding TimePicker}" FontSize="Medium" TextColor="black" />
+                                            <Label Text="{Binding NumberOfPeople}" FontSize="Medium" TextColor="black"/>
+                                        </StackLayout>
+                                        <Button Style="{StaticResource SmallButton}"
+                                                    Margin="30,15,30,10" Text="Open"
+                                                    />
+                                    </StackLayout>
+                                </Frame>
+                            </RelativeLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
